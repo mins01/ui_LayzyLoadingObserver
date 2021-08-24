@@ -41,9 +41,32 @@
 		let ooo;
 		window.addEventListener('load',function(){
 			ooo = new OnOffObserver();
+			//--- 디버그 on
+			ooo.debug = true;
+
+			//--- options 커스텀
+			ooo.options.threshold = 0.5; //50%가 보이면 동작한다
+			// ooo.options.rootMargin = '10px';
+			
+			//--- 옵저버 생성
 			ooo.createObserver()
+
 			// ooo.observe(document.querySelector('.test-IntersectionObserver'));
+			//--- 옵저버 대상 지정
 			ooo.observeAll(document.querySelectorAll('.test-IntersectionObserver'));
+
+			//---  콜백 on/off 재지정
+			ooo.callbackOn = function(entry,observer){
+				if(this.debug){ console.log('callbackOn',entry.target,entry.intersectionRatio); }
+				entry.target.innerText= 'callbackOn: '+entry.intersectionRatio;
+				// console.log('callbackOn',entry.target,entry.intersectionRatio);
+			}
+			ooo.callbackOff = function(entry,observer){
+				if(this.debug){ console.log('callbackOff',entry.target,entry.intersectionRatio); }
+				entry.target.innerText= 'callbackOff: '+entry.intersectionRatio;
+				// console.log('callbackOff',entry.target,entry.intersectionRatio);
+			}
+
 		},{"once":true})
 	</script>
 	<style>
@@ -51,6 +74,14 @@
 	</style>
 </head>
 <body>
+	<div class="container">
+		<h1>OnOffObserver</h1>
+		<ul class="list-group mb-3">
+			<li class="list-group-item"><a href="https://developer.mozilla.org/ko/docs/Web/API/Intersection_Observer_API">Intersection Observer API</a></li>
+			<li class="list-group-item"><a href="https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver/IntersectionObserver">IntersectionObserver</a></li>
+			<li class="list-group-item"><a href="LazyImageOnOffObserver.html">LazyImageOnOffObserver :  레이지 로딩 이미지용</a></li>
+		</ul>
+	</div>
 	<div class="container">
 		<div class="box"></div>
 		<div class="test-IntersectionObserver box">1</div>

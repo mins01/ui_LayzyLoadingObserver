@@ -57,10 +57,10 @@ const OnOffObserver = (function(){
 			return this.observer.unobserve(target);
 		}
 		callbackOn(entry,observer){
-			console.log('callbackOn',entry.target,entry.intersectionRatio);
+			if(this.debug){ console.log('callbackOn',entry.target,entry.intersectionRatio); }
 		}
 		callbackOff(entry,observer){
-			console.log('callbackOff',entry.target,entry.intersectionRatio);
+			if(this.debug){ console.log('callbackOff',entry.target,entry.intersectionRatio); }
 		}
 	}
 	return OnOffObserver;
