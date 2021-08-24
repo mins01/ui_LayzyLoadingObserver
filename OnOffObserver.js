@@ -1,10 +1,5 @@
 const OnOffObserver = (function(){
-	
-	let defOptions = {
-		root: null,
-		rootMargin: '0px',
-		threshold: 0.1
-	}
+	'use strict';
 	let callback = function(entries, observer){
 		// console.log('observer',observer)
 		entries.forEach(entry => {
@@ -28,7 +23,12 @@ const OnOffObserver = (function(){
 	class OnOffObserver{
 		constructor(){
 			this.observer = null;
-			this.options = {...defOptions};
+			this.debug = false;
+			this.options = {
+				root: null,
+				rootMargin: '0px',
+				threshold: 0
+			}
 			// this.callback = function(entries, observer){return;};
 		}
 		createObserver(){
@@ -42,8 +42,8 @@ const OnOffObserver = (function(){
 
 		observe(target){
 			if(!this.observer){ console.warn('this.observer is null'); return;}
-			if(target.dataset.observe){ return;}
-			target.dataset.observe = "on";
+			if(target.dataset.oooStatus){ if(this.debug){ console.log('observe skip : exists target.dataset.oooStatus');} return;}
+			target.dataset.oooStatus = "on";
 			return this.observer.observe(target);
 		}
 		unobserveAll(targets){
@@ -53,7 +53,7 @@ const OnOffObserver = (function(){
 		}
 		unobserve(target){
 			if(!this.observer){ console.warn('this.observer is null'); return null}
-			delete target.dataset.observe;
+			delete target.dataset.oooStatus;
 			return this.observer.unobserve(target);
 		}
 		callbackOn(entry,observer){
