@@ -16,7 +16,7 @@ const LazyImageOnOffObserver = (function(){
 			this.observeAll(document.querySelectorAll(this.targetSelector));
 		}
 		static auto(){
-			let liooo = new LazyImageOnOffObserver();
+			let liooo = new this();
 			liooo.observeAuto();
 			return liooo;
 		}

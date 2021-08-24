@@ -45,6 +45,9 @@
 			// liooo.observeAuto();
 			// => 아래와 동작이 같음
 			liooo = LazyImageOnOffObserver.auto();
+
+
+
 			liooo.debug = true;
 		},{"once":true})
 
@@ -66,8 +69,11 @@
 </head>
 <body>
 	<template id="template_x">
-		<div class="test-IntersectionObserver box">1<img class="lazy-image-ooo" src=""  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
-		<div class="test-IntersectionObserver box">2<img class="lazy-image-ooo" src=""  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">0. data-liooo-status="loaded"로 동작에서 제외<img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" data-liooo-status="loaded"  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">1. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">2. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">3. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://www.google.com/images/logos/analytics_logo.gif" ></div>
+		<div class="test-IntersectionObserver box">4. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
 	</template>
 	<div class="container" id="container">
 		<button class="btn btn-info" onclick="addNewTestNode()">대상 추가</button>
