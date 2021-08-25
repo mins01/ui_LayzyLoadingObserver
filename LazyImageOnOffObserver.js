@@ -5,7 +5,7 @@ const LazyImageOnOffObserver = (function(){
 			super();
 			this.options.threshold=0;
 			this.targetSelector='.lazy-image-ooo:not([data-liooo-status]):not([data-ooo-status])';
-			this.targetDatasetName='imgsrc';
+			this.targetDatasetName='src';
 		}
 		static auto(){
 			let liooo = new this();
