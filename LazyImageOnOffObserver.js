@@ -5,6 +5,7 @@ const LazyImageOnOffObserver = (function(){
 			super();
 			this.options.threshold=0;
 			this.targetSelector='.lazy-image-ooo:not([data-liooo-status]):not([data-ooo-status])';
+			this.targetDatasetName='imgsrc';
 		}
 		static auto(){
 			let liooo = new this();
@@ -18,8 +19,8 @@ const LazyImageOnOffObserver = (function(){
 		callbackOn(entry,observer){
 			if(this.debug) { console.log('callbackOn',entry.target,entry.intersectionRatio); }
 
-			if(entry.target.dataset.src){
-				entry.target.src = entry.target.dataset.src;
+			if(entry.target.dataset[this.targetDatasetName]){
+				entry.target.src = entry.target.dataset[this.targetDatasetName];
 			}
 			console.log('image-on',entry.target.src);
 			entry.target.dataset.lioooStatus="loaded";

@@ -41,10 +41,11 @@
 	<script>
 		let liooo;
 		window.addEventListener('load',function(){
-			// liooo = new LazyImageOnOffObserver();
-			// liooo.observeAuto();
+			liooo = new LazyImageOnOffObserver();
+			liooo.targetDatasetName='imgSrc'; //dataset.src 를 변경해서 사용
+			liooo.observeAuto();
 			// => 아래와 동작이 같음
-			liooo = LazyImageOnOffObserver.auto();
+			// liooo = LazyImageOnOffObserver.auto();
 
 
 
@@ -73,25 +74,22 @@
 		<ul class="list-group mb-3">
 			<li class="list-group-item"><a href="LazyImageOnOffObserver.html">LazyImageOnOffObserver :  레이지 로딩 이미지용</a></li>
 		</ul>
-		<ul class="list-group mb-3">
-			<li class="list-group-item"><a href="LazyImageOnOffObserverDatasetName.html">LazyImageOnOffObserverDatasetName :  레이지 로딩 이미지용 (애트리뷰트 명 변경)</a></li>
-		</ul>
 	</div>
 	<template id="template_x">
-		<div class="test-IntersectionObserver box">0. data-liooo-status="loaded"로 동작에서 제외<img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" data-liooo-status="loaded"  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
-		<div class="test-IntersectionObserver box">1. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
-		<div class="test-IntersectionObserver box">2. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
-		<div class="test-IntersectionObserver box">3. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://www.google.com/images/logos/analytics_logo.gif" ></div>
-		<div class="test-IntersectionObserver box">4. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">0. data-liooo-status="loaded"로 동작에서 제외<img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" data-liooo-status="loaded"  data-img-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">1. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-img-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">2. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">3. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-img-src="https://www.google.com/images/logos/analytics_logo.gif" ></div>
+		<div class="test-IntersectionObserver box">4. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
 	</template>
 	<div class="container" id="container">
 		<button class="btn btn-info" onclick="addNewTestNode()">대상 추가</button>
 		<div class="box"></div>
-		<div class="test-IntersectionObserver box">0. data-liooo-status="loaded"로 동작에서 제외<img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" data-liooo-status="loaded"  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
-		<div class="test-IntersectionObserver box">1. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
-		<div class="test-IntersectionObserver box">2. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
-		<div class="test-IntersectionObserver box">3. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://www.google.com/images/logos/analytics_logo.gif" ></div>
-		<div class="test-IntersectionObserver box">4. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">0. data-liooo-status="loaded"로 동작에서 제외<img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" data-liooo-status="loaded"  data-img-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">1. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-img-src="https://www.google.com/images/logos/analytics_logo.gif"  ></div>
+		<div class="test-IntersectionObserver box">2. 빈 이미지 src<br><img class="lazy-image-ooo" src=""  data-img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
+		<div class="test-IntersectionObserver box">3. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-img-src="https://www.google.com/images/logos/analytics_logo.gif" ></div>
+		<div class="test-IntersectionObserver box">4. 이미 이미지가 있는 경우<br><img class="lazy-image-ooo" src="https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  data-img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JFATlIr0v0j7S7d5tJxItUaYN0S-ehrsMny5fVNquPkbelf8zg" ></div>
 		<div class="box"></div>
 	</div>
 </body>
