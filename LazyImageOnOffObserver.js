@@ -23,8 +23,8 @@ const LazyImageOnOffObserver = (function(){
 			if(entry.target.dataset[this.targetDatasetName]){
 				entry.target.src = entry.target.dataset[this.targetDatasetName];
 			}
-			console.log('image-on',entry.target.src);
 			entry.target.dataset.lioooStatus="loaded";
+			if(this.debug) { console.log('image-on',entry.target.src); }
 			this.unobserve(entry.target); //이후엔 관찰 안한다. 즉 1번만 동작한다.
 		}
 		callbackOff(entry,observer){ //동작할 일 없음
