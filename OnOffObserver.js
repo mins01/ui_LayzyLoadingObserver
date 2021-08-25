@@ -36,6 +36,7 @@ const OnOffObserver = (function(){
 			this.observer = new IntersectionObserver(callback.bind(this),this.options);
 		}
 		observeAll(targets){
+			if(this.debug){ console.log('OnOffObserver::observeAll()',targets.length);}
 			targets.forEach((target)=>{
 				this.observe(target);
 			})
@@ -49,7 +50,7 @@ const OnOffObserver = (function(){
 			return this.observer.observe(target);
 		}
 		unobserveAll(targets){
-			if(this.debug){ console.log('OnOffObserver::unobserveAll()');}
+			if(this.debug){ console.log('OnOffObserver::unobserveAll()',targets.length);}
 			targets.forEach((target) => {
 				this.unobserve(target);
 			});
