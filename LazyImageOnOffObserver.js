@@ -13,6 +13,7 @@ const LazyImageOnOffObserver = (function(){
 			return liooo;
 		}
 		observeAuto(){
+			if(this.debug){ console.log('LazyImageOnOffObserver::observeAuto()');}
 			if(!this.observer) this.createObserver();
 			this.observeAll(document.querySelectorAll(this.targetSelector));
 		}

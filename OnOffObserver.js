@@ -32,6 +32,7 @@ const OnOffObserver = (function(){
 			// this.callback = function(entries, observer){return;};
 		}
 		createObserver(){
+			if(this.debug){ console.log('OnOffObserver::createObserver()');}
 			this.observer = new IntersectionObserver(callback.bind(this),this.options);
 		}
 		observeAll(targets){
@@ -41,17 +42,20 @@ const OnOffObserver = (function(){
 		}
 
 		observe(target){
+			if(this.debug){ console.log('OnOffObserver::observe()');}
 			if(!this.observer){ console.warn('this.observer is null'); return;}
 			if(target.dataset.oooStatus){ if(this.debug){ console.log('observe skip : exists target.dataset.oooStatus');} return;}
 			target.dataset.oooStatus = "on";
 			return this.observer.observe(target);
 		}
 		unobserveAll(targets){
+			if(this.debug){ console.log('OnOffObserver::unobserveAll()');}
 			targets.forEach((target) => {
 				this.unobserve(target);
 			});
 		}
 		unobserve(target){
+			if(this.debug){ console.log('OnOffObserver::unobserve()');}
 			if(!this.observer){ console.warn('this.observer is null'); return null}
 			delete target.dataset.oooStatus;
 			return this.observer.unobserve(target);
