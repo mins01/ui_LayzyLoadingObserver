@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* .fooo-container{
+    overflow: hidden;
+} */
+
+/* .fooo-floating{
+
+} */
+.fooo-container > .fooo-target{
+    position: static;
+    z-index: 10;
+}
+/* .fooo-container.fooo-floating > .fooo-target{
+    display: block;
+    position: fixed;
+    top:0px;
+} */
+
+.fooo-container.fooo-floating.fooo-over[data-fooo-y='over'] > .fooo-target ,
+.fooo-container.fooo-floating.fooo-under[data-fooo-y='under'] > .fooo-target{
+    display: block;
+    position: fixed;
+    top:0px;
+}
